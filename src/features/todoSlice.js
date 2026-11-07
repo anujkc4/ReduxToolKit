@@ -19,11 +19,11 @@ export const todoSlice = createSlice({
         text: action.payload,
       });
     },
-    remveTodo: (sate, action) => {
+    removeTodo: (sate, action) => {
       sate.todos = sate.todos.filter((todo) => todo.id !== action.payload);
     },
   },
 });
 
-export const { addTodo, remveTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 export default todoSlice.reducer;

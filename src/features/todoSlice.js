@@ -20,11 +20,18 @@ export const todoSlice = createSlice({
       };
       state.todos.push(todo);
     },
-    removeTodo: (sate, action) => {
-      sate.todos = sate.todos.filter((todo) => todo.id !== action.payload);
+    removeTodo: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    },
+    editTodo: (state, action) => {
+      state.todos = state.todos.map((todo) =>
+        todo.id == action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo,
+      );
     },
   },
 });
 
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, editTodo } = todoSlice.actions;
 export default todoSlice.reducer;
